@@ -92,7 +92,7 @@ class conv2D(Layer):
 		self.dilation_rate = dilation_rate
 		self.weight_norm = weight_norm
 
-		super().__init__(name)
+		super(conv2D, self).__init__(name)
 
 	def _parse_args(self):
 		# set size
@@ -165,7 +165,7 @@ class conv1D(Layer):
 		self.dilation_rate = dilation_rate
 		self.weight_norm = weight_norm
 
-		super().__init__(name)
+		super(conv1D, self).__init__(name)
 
 	def _parse_args(self):
 		# set size
@@ -221,7 +221,7 @@ class maxpoolLayer(Layer):
 		self.stride = stride
 		self.pad = pad
 
-		super().__init__(name)
+		super(maxpoolLayer, self).__init__(name)
 
 	def _parse_args(self):
 		if isinstance(self.size, list):
@@ -248,7 +248,7 @@ class activation(Layer):
 		self.name = name
 		self.kwarg = kwarg
 
-		super().__init__(name)
+		super(activation, self).__init__(name)
 
 	def _deploy(self):
 		if self.param == 0:
@@ -284,7 +284,7 @@ class fcLayer(Layer):
 		self.name = name 
 		self.values = values
 
-		super().__init__(name)
+		super(fcLayer, self).__init__(name)
 
 	def _initialize(self):
 		insize = self.x.get_shape().as_list()[-1]
@@ -315,7 +315,7 @@ class batch_norm_graph(Layer):
 		self.epsilon = epsilon
 		self.name = name
 
-		super().__init__(name)
+		super(batch_norm_graph, self).__init__(name)
 
 	def _deploy(self):
 		# will modify this to lower api in later version
@@ -332,7 +332,7 @@ class batch_norm(Layer):
 		self.is_training = is_training
 		self.values = values
 
-		super().__init__(name)
+		super(batch_norm, self).__init__(name)
 
 	def _initialize(self):
 		shape = self.x.get_shape().as_list()[-1]
@@ -377,7 +377,7 @@ class deconv2D(Layer):
 		self.pad = pad 
 		self.usebias = usebias
 
-		super().__init__(name)
+		super(deconv2D, self).__init__(name)
 
 	def _parse_args(self):
 		inp_size = self.x.get_shape().as_list()
@@ -416,7 +416,7 @@ class flatten(Layer):
 	def __init__(self, x=None, name=None):
 		self.x = x 
 
-		super().__init__(name)
+		super(flatten, self).__init__(name)
 
 	def _deploy(self):
 		shape = self.x.get_shape().as_list()
